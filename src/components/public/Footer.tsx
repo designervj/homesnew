@@ -3,6 +3,7 @@ import { Building2, Phone, Mail, MapPin } from "lucide-react";
 import { getServerI18n } from "@/lib/i18n/server";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeHref } from "@/lib/i18n/utils";
+import { ThemeImage } from "@/components/shared/ThemeImage";
 
 const PROJECTS = [
   { name: "Okas Enclave",           slug: "okas-enclave" },
@@ -33,12 +34,14 @@ export async function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href={localizeHref(locale, "/")} className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Building2 className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="font-serif text-xl font-semibold text-foreground">
-                Homes<span className="text-primary">.</span>
-              </span>
+              <ThemeImage 
+                lightSrc="/homes/Homes-Logo.webp" 
+                           darkSrc="/images/white-logo.png"
+                alt="Homes Logo" 
+                width={150} 
+                height={54} 
+                className="h-14 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
               Premium real estate advisory connecting buyers with RERA-verified properties across Lucknow and Uttar Pradesh.
