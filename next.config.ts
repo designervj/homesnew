@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true, // 🔥 VERY IMPORTANT (Hostinger fix)
     remotePatterns: [
       {
         protocol: "https",
@@ -18,11 +19,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   experimental: {
     serverActions: {
       bodySizeLimit: "4mb",
     },
   },
+
+  output: "standalone", // 🔥 production deploy ke liye best
 };
 
 export default nextConfig;
