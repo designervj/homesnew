@@ -21,6 +21,7 @@ export function ThemeImage({
   useEffect(() => {
     setMounted(true);
   }, []);
+  
 
   // Standard server-side fallback or before mounting
   const src = mounted && resolvedTheme === "dark" ? darkSrc : lightSrc;
