@@ -121,7 +121,7 @@ export function Navbar() {
           {/* Logo */}
           <Link
             href={localizeHref(locale, "/")}
-            className="flex flex-shrink-0 items-center rounded-xl backdrop-blur-sm transition-colors"
+            className="flex flex-shrink-0 items-center rounded-xl  transition-colors"
           >
             <ThemeImage
               lightSrc="/images/Homes-Logo.webp"
