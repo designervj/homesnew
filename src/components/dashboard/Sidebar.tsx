@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { SafeImage as Image } from "@/components/shared/SafeImage";
 import { usePathname } from "next/navigation";
+import { ThemeImage } from "@/components/shared/ThemeImage";
 import {
   Building2,
   LayoutDashboard,
@@ -23,6 +24,7 @@ import {
 } from "@/components/shared/LocaleProvider";
 import { localizeHref, stripLocaleFromPathname } from "@/lib/i18n/utils";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/shared/Logo";
 import type { UserRole } from "@/types";
 
 // ─── NAV CONFIG ───────────────────────────────────────────────────────────────
@@ -120,13 +122,13 @@ export function DashboardSidebar({ role }: DashboardSidebarProps) {
       {/* Logo */}
       <div className="h-20 flex items-center px-6 border-b border-border">
         <Link href={localizeHref(locale, "/admin")} className="block w-36 h-auto relative">
-          <Image
-            src="/homes/Homes-Logo.webp"
-            alt="Homes Logo"
-            width={160}
-            height={50}
-            className="h-auto w-auto object-contain"
-            priority
+          <ThemeImage
+            lightSrc="/images/Homes-Logo.webp"
+            darkSrc="/images/logo-main.svg"
+            width={144}
+            height={48}
+            className="h-auto w-full"
+            alt="Lucknow Homes"
           />
         </Link>
       </div>
@@ -139,7 +141,7 @@ export function DashboardSidebar({ role }: DashboardSidebarProps) {
       </div>
 
       {/* Nav items */}
-      <nav className="flex-1 px-3 space-y-0.5">
+      <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto no-scrollbar">
         {visibleItems.map((item) => {
           const Icon = item.icon;
           // Active if exact match for /admin, or starts-with for sub-routes

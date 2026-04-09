@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Script from "next/script";
 import { notFound } from "next/navigation";
@@ -469,73 +470,75 @@ export default async function PropertyDetailPage({
             </div>
 
             {/* ── SIDEBAR ───────────────────────────────────────────────────── */}
-            <div className="space-y-5">
+            <div className="lg:col-span-1">
+              <div className="space-y-4 sticky top-[150px] h-fit max-h-[calc(100vh-170px)] overflow-y-auto no-scrollbar pr-2 pb-10">
 
-              {/* Enquiry form card */}
-              <div className="bg-card border border-border rounded-2xl p-6 sticky top-36">
-                <h3 className="mb-5 font-serif text-lg font-medium text-foreground">
-                  Enquire About This Property
-                </h3>
-                <EnquiryForm
-                  propertyId={p._id}
-                  propertyName={p.projectName ?? p.title}
-                  propertySlug={p.slug}
-                  variant="sidebar"
-                />
+                {/* Enquiry form card */}
+                <div className="bg-card border border-border rounded-2xl p-4">
+                  <h3 className="mb-3 font-serif text-base font-medium text-foreground">
+                    Enquire About This Property
+                  </h3>
+                  <EnquiryForm
+                    propertyId={p._id}
+                    propertyName={p.projectName ?? p.title}
+                    propertySlug={p.slug}
+                    variant="sidebar"
+                  />
 
-                {/* Direct call CTA */}
-                <div className="mt-5 pt-5 border-t border-border">
-                  <a
-                    href="tel:+918874625303"
-                    className="flex items-center justify-center gap-2.5 w-full py-3 border border-border hover:border-primary/30 text-muted-foreground hover:text-primary rounded-xl text-sm font-medium transition-all"
-                  >
-                    <Phone className="w-4 h-4" /> +91 88746 25303
-                  </a>
+                  {/* Direct call CTA */}
+                  <div className="mt-3 pt-3 border-t border-border">
+                    <a
+                      href="tel:+918874625303"
+                      className="flex items-center justify-center gap-2.5 w-full py-3 border border-border hover:border-primary/30 text-muted-foreground hover:text-primary rounded-xl text-sm font-medium transition-all"
+                    >
+                      <Phone className="w-4 h-4" /> +91 88746 25303
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              {/* Brochure download */}
-              {brochure && (
-                <a
-                  href={brochure.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3 bg-primary/10 hover:bg-primary/15 text-primary border border-primary/20 rounded-2xl text-sm font-medium transition-all"
-                >
-                  Download Brochure
-                </a>
-              )}
-
-              {/* Compliance card */}
-              <div className="bg-card border border-border rounded-2xl p-5 space-y-3">
-                <p className="text-xs text-muted-foreground uppercase tracking-widest">Compliance</p>
-                {p.legalInfo?.reraRegistered && p.legalInfo.reraId && (
-                  <div className="flex items-center gap-2">
-                    <ReraBadge reraId={p.legalInfo.reraId} size="sm" showId />
-                  </div>
+                {/* Brochure download */}
+                {brochure && (
+                  <a
+                    href={brochure.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full py-3 bg-primary/10 hover:bg-primary/15 text-primary border border-primary/20 rounded-2xl text-sm font-medium transition-all"
+                  >
+                    Download Brochure
+                  </a>
                 )}
-                {p.financials?.approvedBanks && p.financials.approvedBanks.length > 0 && (
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1.5">Bank Approved</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.financials.approvedBanks.slice(0, 4).map((bank) => (
-                        <span key={bank} className="rounded-md bg-accent px-2 py-0.5 text-[11px] text-muted-foreground">
-                          {bank}
-                        </span>
-                        ))}
-                      </div>
+
+                {/* Compliance card */}
+                <div className="bg-card border border-border rounded-2xl p-4 space-y-2">
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest">Compliance</p>
+                  {p.legalInfo?.reraRegistered && p.legalInfo.reraId && (
+                    <div className="flex items-center gap-2">
+                      <ReraBadge reraId={p.legalInfo.reraId} size="sm" showId />
                     </div>
-                )}
-                {p.features?.isGatedCommunity && (
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <CheckCircle className="w-3.5 h-3.5 text-secondary" /> Gated Community
-                  </div>
-                )}
-                {p.features?.isVastuCompliant && (
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <CheckCircle className="w-3.5 h-3.5 text-secondary" /> Vastu Compliant
-                  </div>
-                )}
+                  )}
+                  {p.financials?.approvedBanks && p.financials.approvedBanks.length > 0 && (
+                      <div>
+                        <p className="text-xs text-muted-foreground mb-1.5">Bank Approved</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {p.financials.approvedBanks.slice(0, 4).map((bank) => (
+                          <span key={bank} className="rounded-md bg-accent px-2 py-0.5 text-[11px] text-muted-foreground">
+                            {bank}
+                          </span>
+                          ))}
+                        </div>
+                      </div>
+                  )}
+                  {p.features?.isGatedCommunity && (
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="w-3.5 h-3.5 text-secondary" /> Gated Community
+                    </div>
+                  )}
+                  {p.features?.isVastuCompliant && (
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="w-3.5 h-3.5 text-secondary" /> Vastu Compliant
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

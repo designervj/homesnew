@@ -4,6 +4,7 @@ import { getServerI18n } from "@/lib/i18n/server";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeHref } from "@/lib/i18n/utils";
 import { ThemeImage } from "@/components/shared/ThemeImage";
+import { Logo } from "@/components/shared/Logo";
 
 const PROJECTS = [
   { name: "Okas Enclave",           slug: "okas-enclave" },
@@ -34,13 +35,13 @@ export async function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href={localizeHref(locale, "/")} className="flex items-center gap-2.5 mb-5">
-              <ThemeImage 
-                lightSrc="/homes/Homes-Logo.webp" 
-                           darkSrc="/images/white-logo.png"
-                alt="Homes Logo" 
-                width={150} 
-                height={54} 
-                className="h-14 w-auto object-contain"
+              <ThemeImage
+                lightSrc="/images/Homes-Logo.webp"
+                darkSrc="/images/logo-main.svg"
+                width={162}
+                height={56}
+                className="h-14 w-auto"
+                alt="Lucknow Homes"
               />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">

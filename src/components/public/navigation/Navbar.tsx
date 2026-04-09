@@ -17,6 +17,7 @@ import { localizeHref, stripLocaleFromPathname } from "@/lib/i18n/utils";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeImage } from "@/components/shared/ThemeImage";
+import { Logo } from "@/components/shared/Logo";
 
 // ─── PROJECTS DATA ────────────────────────────────────────────────────────────
 
@@ -123,13 +124,12 @@ export function Navbar() {
             className="flex flex-shrink-0 items-center rounded-xl backdrop-blur-sm transition-colors"
           >
             <ThemeImage
-              lightSrc="/homes/Homes-Logo.webp"
-              darkSrc="/images/white-logo.png"
-              alt="Homes Logo"
-              width={250}
-              height={90}
-              className="h-11 w-auto object-contain bg-transparent"
-              priority
+              lightSrc="/images/Homes-Logo.webp"
+              darkSrc="/images/logo-main.svg"
+              width={130}
+              height={44}
+              className="h-11 w-auto"
+              alt="Lucknow Homes"
             />
           </Link>
 
@@ -291,12 +291,12 @@ export function Navbar() {
                 className="flex items-center"
               >
                 <ThemeImage
-                  lightSrc="/homes/Homes-Logo.webp"
-                  darkSrc="/homes/Homes-Logo.webp"
-                  alt="Homes Logo"
-                  width={200}
-                  height={72}
-                  className="h-11 w-auto object-contain"
+                  lightSrc="/images/Homes-Logo.webp"
+                  darkSrc="/images/logo-main.svg"
+                  width={130}
+                  height={44}
+                  className="h-11 w-auto"
+                  alt="Lucknow Homes"
                 />
               </Link>
               <div className="flex items-center gap-2">
