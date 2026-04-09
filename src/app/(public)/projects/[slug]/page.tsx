@@ -2,7 +2,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 import { SafeImage as Image } from "@/components/shared/SafeImage";
-import { getPropertyBySlug, getAllPropertySlugs } from "@/lib/db/actions/property.actions";
+import { getPropertyBySlug } from "@/lib/db/actions/property.actions";
 import { getPublishedPropertySiteForProperty } from "@/lib/db/actions/property-site.actions";
 import { ReraBadge } from "@/components/public/properties/ReraBadge";
 import { EnquiryForm } from "@/components/public/forms/EnquiryForm";
@@ -17,12 +17,10 @@ import { localizeHref } from "@/lib/i18n/utils";
 import { formatINR } from "@/lib/utils/constants";
 import type { Metadata } from "next";
 
-// ─── STATIC PARAMS ────────────────────────────────────────────────────────────
-
-export async function generateStaticParams() {
-  const slugs = await getAllPropertySlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+// ─── DYNAMIC RENDERING ────────────────────────────────────────────────────────
+// Force dynamic rendering — this page uses cookies()/headers() via getServerI18n()
+// which are incompatible with static pre-rendering (generateStaticParams).
+export const dynamic = "force-dynamic";
 
 // ─── METADATA ─────────────────────────────────────────────────────────────────
 
