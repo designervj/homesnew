@@ -132,11 +132,17 @@ export async function Footer() {
             © {new Date().getFullYear()} Homes. All rights reserved. A premium real estate advisory platform.
           </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "RERA Disclaimer"].map((link) => (
-              <Link key={link} href={localizeHref(locale, "/")} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-                {link}
-              </Link>
-            ))}
+            {["Privacy Policy", "Terms of Service", "RERA Disclaimer"].map((link) => {
+              let href = "/";
+              if (link === "Terms of Service") href = "/terms-of-use";
+              if (link === "Privacy Policy") href = "/privacy-policy";
+              
+              return (
+                <Link key={link} href={localizeHref(locale, href)} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                  {link === "Terms of Service" ? "Terms of Use" : link}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
